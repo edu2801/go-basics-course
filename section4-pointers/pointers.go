@@ -7,10 +7,11 @@ func main() {
 
 	fmt.Println("Age:", age)
 
-	adultYears := getAdultYears(&age)
-	fmt.Println(adultYears)
+	getAdultYears(&age)
+	fmt.Println(age)
 }
 
-func getAdultYears(age *int) int {
-	return *age - 18
+func getAdultYears(age *int) {
+	// return *age - 18
+	*age = *age - 18
 }
