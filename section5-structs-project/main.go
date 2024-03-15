@@ -31,7 +31,7 @@ func getNoteData() (string, string) {
 }
 
 func getUserInput(promp string) string {
-	fmt.Print(promp)
+	fmt.Printf("%v ", promp)
 
 	reader := bufio.NewReader(os.Stdin)
 
@@ -40,7 +40,6 @@ func getUserInput(promp string) string {
 	if err != nil {
 		return ""
 	}
-	fmt.Println(text)
 
 	text = strings.TrimSuffix(text, "\n")
 	text = strings.TrimSuffix(text, "\r")
