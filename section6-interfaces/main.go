@@ -15,7 +15,7 @@ type saver interface {
 }
 
 type outputtable interface {
-  saver
+	saver
 	Display()
 }
 
@@ -25,9 +25,9 @@ type outputtable interface {
 // }
 
 func main() {
-  printSomething(1)
-  printSomething(1.5)
-  printSomething("batata doce")
+	printSomething(1)
+	printSomething(1.5)
+	printSomething("batata doce")
 	title, content := getNoteData()
 	todoText := getUserInput("Todo text:")
 
@@ -38,7 +38,7 @@ func main() {
 		return
 	}
 
-  printSomething(todo)
+	printSomething(todo)
 
 	userNote, err := note.New(title, content)
 
@@ -57,14 +57,40 @@ func main() {
 }
 
 func printSomething(value interface{}) {
-  switch value.(type) {
-  case int:
-    fmt.Println("Integer:", value)
-  case float64:
-   fmt.Println("Float:", value)
-  case string:
-   fmt.Println(value)
-  }
+	intVal, ok := value.(int)
+
+	if ok {
+		fmt.Println("Integer:", intVal)
+		return
+	}
+
+	floatVal, ok := value.(float64)
+
+	if ok {
+		fmt.Println("Integer:", floatVal)
+		return
+	}
+
+	stringVal, ok := value.(string)
+
+	if ok {
+		fmt.Println("Integer:", stringVal)
+		return
+	}
+
+	// switch value.(type) {
+	// case int:
+	//
+	//	fmt.Println("Integer:", value)
+	//
+	// case float64:
+	//
+	//	fmt.Println("Float:", value)
+	//
+	// case string:
+	//
+	//	 fmt.Println(value)
+	//	}
 }
 
 func outputData(data outputtable) error {
